@@ -1,73 +1,91 @@
-# Welcome to your Lovable project
 
-## Project info
+# Codewave - Online Microtask Platform
 
-**URL**: https://lovable.dev/projects/1125c4b4-898f-4e5c-a5d2-e0049996ea36
+## Project Overview
 
-## How can I edit this code?
+Codewave is an online platform where users register, perform simple tasks to earn money, and can fund their account to earn incremental bonuses on their deposits. It's designed to provide a trustworthy, user-friendly way to earn through microtasks and safe investment incentives.
 
-There are several ways of editing your application.
+## Core Features
 
-**Use Lovable**
+- User registration and authentication
+- Task completion and earnings tracking
+- Wallet management with deposit bonuses
+- Secure withdrawal system
+- Dashboard for monitoring progress and earnings
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1125c4b4-898f-4e5c-a5d2-e0049996ea36) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- React
+- TypeScript
+- React Router Dom
+- TanStack Query
+- Tailwind CSS
+- shadcn/ui Components
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Getting Started
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Run development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+/
+├── public/              # Static assets
+│   ├── favicon.ico
+│   ├── placeholder.svg
+│   └── robots.txt
+├── src/
+│   ├── components/      # Reusable UI components
+│   │   ├── ui/          # UI component library (shadcn)
+│   │   ├── Header.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Features.tsx
+│   │   ├── FAQ.tsx
+│   │   ├── Footer.tsx
+│   │   └── DashboardLayout.tsx
+│   ├── hooks/           # Custom React hooks
+│   │   ├── use-mobile.tsx
+│   │   └── use-toast.ts
+│   ├── lib/             # Utility functions
+│   │   └── utils.ts
+│   ├── pages/           # Page components
+│   │   ├── Index.tsx    # Landing page
+│   │   ├── Login.tsx
+│   │   ├── Register.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Tasks.tsx
+│   │   ├── Wallet.tsx
+│   │   └── NotFound.tsx
+│   ├── App.tsx          # Main application component
+│   ├── main.tsx         # Application entry point
+│   └── index.css        # Global styles
+├── tailwind.config.ts   # Tailwind configuration
+├── tsconfig.json        # TypeScript configuration
+├── vite.config.ts       # Vite configuration
+└── package.json         # Project dependencies
+```
 
-**Use GitHub Codespaces**
+## Development Workflow
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Start the development server with `npm run dev`
+4. Make changes and test locally
+5. Build the production version with `npm run build`
+6. Deploy the `/dist` folder to your hosting provider
 
-## What technologies are used for this project?
+## Deployment
 
-This project is built with:
+The application can be built for production using:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```sh
+npm run build
+```
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1125c4b4-898f-4e5c-a5d2-e0049996ea36) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This will create optimized assets in the `/dist` directory that can be deployed to any static hosting service.
