@@ -1,8 +1,17 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  
+  const navigateToAdmin = () => {
+    setDialogOpen(false);
+    window.location.href = '/admin-login';
+  };
+
   return (
     <footer id="contact" className="border-t bg-background">
       <div className="container flex flex-col gap-8 py-12 md:py-16">
@@ -39,12 +48,31 @@ const Footer = () => {
               <div className="flex flex-col">
                 <Link to="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Privacy</Link>
                 <div className="mt-1 flex items-center">
-                  <img 
-                    src="https://cdn-icons-png.flaticon.com/512/3426/3426624.png" 
-                    alt="Milk Carton" 
-                    className="h-6 w-6 cursor-pointer hover:opacity-80" 
-                    onClick={() => document.getElementById('milk-dialog').showModal()} 
-                  />
+                  <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                    <DialogTrigger asChild>
+                      <img 
+                        src="https://cdn-icons-png.flaticon.com/512/3426/3426624.png" 
+                        alt="Milk Carton" 
+                        className="h-6 w-6 cursor-pointer hover:opacity-80" 
+                      />
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md">
+                      <DialogHeader>
+                        <DialogTitle>Sind Sie sicher, dass Sie fortfahren möchten?</DialogTitle>
+                        <DialogDescription>
+                          Sie sind dabei, die Adminseite zu betreten.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <DialogFooter className="sm:justify-start">
+                        <Button variant="outline" onClick={() => setDialogOpen(false)}>
+                          Nein
+                        </Button>
+                        <Button onClick={navigateToAdmin}>
+                          Ja
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
               <a href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Cookies</a>
@@ -67,32 +95,10 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        
-        {/* Milk Carton Dialog in German */}
-        <dialog id="milk-dialog" className="modal p-6 rounded-lg shadow-lg bg-white">
-          <h3 className="text-xl font-bold mb-4">Sind Sie sicher, dass Sie fortfahren möchten?</h3>
-          <p className="mb-6">Sie sind dabei, die Adminseite zu betreten.</p>
-          <div className="flex justify-end gap-4">
-            <button 
-              onClick={() => document.getElementById('milk-dialog').close()}
-              className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-            >
-              Nein
-            </button>
-            <button 
-              onClick={() => {
-                document.getElementById('milk-dialog').close();
-                window.location.href = '/admin-login';
-              }}
-              className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
-            >
-              Ja
-            </button>
-          </div>
-        </dialog>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
