@@ -7,16 +7,17 @@ Codewave is an online platform where users register, perform simple tasks to ear
 
 ## Core Features
 
-- User registration and authentication
+- User registration with fee payment system
 - Task completion and earnings tracking
-- Wallet management with deposit bonuses
+- Wallet management with deposit bonuses based on balance
 - Secure withdrawal system
+- Admin panel for transaction approval
 - Dashboard for monitoring progress and earnings
 
 ## Tech Stack
 
 - React
-- TypeScript
+- JavaScript
 - React Router Dom
 - TanStack Query
 - Tailwind CSS
@@ -36,49 +37,67 @@ npm run dev
 
 ```
 /
-├── public/              # Static assets
+├── public/
 │   ├── favicon.ico
 │   ├── placeholder.svg
 │   └── robots.txt
 ├── src/
-│   ├── components/      # Reusable UI components
-│   │   ├── ui/          # UI component library (shadcn)
-│   │   ├── Header.tsx
-│   │   ├── Hero.tsx
-│   │   ├── Features.tsx
-│   │   ├── FAQ.tsx
-│   │   ├── Footer.tsx
-│   │   └── DashboardLayout.tsx
-│   ├── hooks/           # Custom React hooks
-│   │   ├── use-mobile.tsx
-│   │   └── use-toast.ts
-│   ├── lib/             # Utility functions
-│   │   └── utils.ts
-│   ├── pages/           # Page components
-│   │   ├── Index.tsx    # Landing page
-│   │   ├── Login.tsx
-│   │   ├── Register.tsx
-│   │   ├── Dashboard.tsx
-│   │   ├── Tasks.tsx
-│   │   ├── Wallet.tsx
-│   │   └── NotFound.tsx
-│   ├── App.tsx          # Main application component
-│   ├── main.tsx         # Application entry point
-│   └── index.css        # Global styles
-├── tailwind.config.ts   # Tailwind configuration
-├── tsconfig.json        # TypeScript configuration
-├── vite.config.ts       # Vite configuration
-└── package.json         # Project dependencies
+│   ├── components/
+│   │   ├── ui/                        # UI component library (shadcn)
+│   │   │   ├── button.jsx
+│   │   │   ├── card.jsx
+│   │   │   ├── form.jsx
+│   │   │   └── ... (other UI components)
+│   │   ├── Header.jsx                 # Site header/navigation
+│   │   ├── Hero.jsx                   # Landing page hero section
+│   │   ├── PaymentConfirmation.jsx    # Payment upload component
+│   │   ├── Features.jsx               # Features showcase
+│   │   ├── FAQ.jsx                    # FAQ section
+│   │   ├── Footer.jsx                 # Site footer
+│   │   └── DashboardLayout.jsx        # Layout for dashboard pages
+│   ├── hooks/                         # Custom React hooks
+│   │   ├── use-mobile.jsx
+│   │   └── use-toast.js
+│   ├── lib/                           # Utility functions
+│   │   └── utils.js
+│   ├── pages/                         # Page components
+│   │   ├── Index.jsx                  # Landing page
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Tasks.jsx
+│   │   ├── Wallet.jsx
+│   │   ├── Admin.jsx                  # Admin panel for approvals
+│   │   └── NotFound.jsx
+│   ├── App.jsx                        # Main application component
+│   ├── main.jsx                       # Application entry point
+│   └── index.css                      # Global styles
+├── tailwind.config.js                 # Tailwind configuration
+└── package.json                       # Project dependencies
 ```
 
-## Development Workflow
+## Admin Features
 
-1. Clone the repository
-2. Install dependencies with `npm install`
-3. Start the development server with `npm run dev`
-4. Make changes and test locally
-5. Build the production version with `npm run build`
-6. Deploy the `/dist` folder to your hosting provider
+- Review and approve/deny user registrations
+- Verify deposit receipts and credit user accounts
+- Block malicious users from creating accounts
+
+## User Flow
+
+1. User registers by providing details and paying ₦5,000 registration fee
+2. Admin approves registration after verifying payment
+3. User logs in and can:
+   - Complete tasks to earn money
+   - Deposit funds to earn daily bonuses
+   - Withdraw earned funds to their bank account
+
+## Bonus Rate System
+
+The daily bonus rate increases with higher deposit balances:
+- ₦0 - ₦4,999: 1% daily
+- ₦5,000 - ₦9,999: 1.5% daily
+- ₦10,000 - ₦49,999: 2% daily
+- ₦50,000+: 3% daily
 
 ## Deployment
 
