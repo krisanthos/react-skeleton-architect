@@ -20,25 +20,45 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // In a real app, you'd send this to your backend
-    console.log("Contact form submitted:", formData);
-    
-    // Show success message
-    toast({
-      title: "Message Sent",
-      description: "We'll get back to you as soon as possible.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
+    try {
+      // In a real implementation, this would connect to a server endpoint
+      // For now we'll just simulate a successful submission
+      console.log("Contact form submitted to victorycrisantos@gmail.com:", formData);
+      
+      // For a real implementation, you would use a form submission service like EmailJS or a backend API
+      // Here is an example of what the fetch call would look like:
+      // await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     ...formData,
+      //     recipient: 'victorycrisantos@gmail.com'
+      //   })
+      // });
+      
+      toast({
+        title: "Message Sent",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -83,7 +103,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <p className="text-gray-500">support@codewave.com</p>
+                  <p className="text-gray-500">victorycrisantos@gmail.com</p>
                 </div>
               </div>
               

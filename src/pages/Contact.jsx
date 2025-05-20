@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import Header from "@/components/Header";
+import MobileHeader from "@/components/MobileHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,30 +22,49 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // In a real app, you'd send this to your backend
-    console.log("Contact form submitted:", formData);
-    
-    // Show success message
-    toast({
-      title: "Message Sent",
-      description: "We'll get back to you as soon as possible.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
+    try {
+      // In a real implementation, this would connect to a server endpoint
+      console.log("Contact form submitted to victorycrisantos@gmail.com:", formData);
+      
+      // For a real implementation, you would use a form submission service or a backend API
+      // Here is an example of what the fetch call would look like:
+      // await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     ...formData,
+      //     recipient: 'victorycrisantos@gmail.com'
+      //   })
+      // });
+      
+      toast({
+        title: "Message Sent",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
   
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <MobileHeader />
       <main className="flex-1 container mx-auto py-12 px-4">
         <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
         
@@ -77,7 +96,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-medium">Email</h3>
-                  <p className="text-muted-foreground">info@codewave.com</p>
+                  <p className="text-muted-foreground">victorycrisantos@gmail.com</p>
                 </div>
               </div>
               
