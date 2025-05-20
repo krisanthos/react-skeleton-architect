@@ -4,16 +4,28 @@ import React from "react";
 const Features = () => {
   const featuresList = [
     {
-      title: "Intuitive Design",
-      description: "Clean interface that anyone can use with minimal training. Focus on your work, not learning software."
+      title: "Fast Earnings",
+      description: "Complete simple tasks and surveys to earn money quickly with immediate credits to your wallet."
     },
     {
-      title: "Powerful Tools",
-      description: "Industry-leading capabilities that handle your most complex challenges with ease."
+      title: "Secure Payments",
+      description: "Our payment system ensures your earnings are safely processed with reliable withdrawal options."
     },
     {
-      title: "Seamless Integration",
-      description: "Works with your existing tech stack. No migration headaches or compatibility issues."
+      title: "Daily Bonuses",
+      description: "Enjoy 1% daily bonuses on your deposits, helping your money grow while you complete tasks."
+    },
+    {
+      title: "Low Entry Barrier",
+      description: "Start with a small registration fee and begin earning immediately with no complex requirements."
+    },
+    {
+      title: "Mobile Friendly",
+      description: "Complete tasks on the go with our fully responsive platform that works on all devices."
+    },
+    {
+      title: "24/7 Support",
+      description: "Our dedicated support team is always available to assist you with any questions or concerns."
     }
   ];
 
@@ -23,10 +35,10 @@ const Features = () => {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Features
+              Why Choose Codewave
             </h2>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Everything you need to succeed, in one powerful package.
+              The simplest way to earn money online through tasks, surveys, and daily bonuses.
             </p>
           </div>
         </div>

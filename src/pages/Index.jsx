@@ -3,7 +3,7 @@ import React from "react";
 import MobileHeader from "@/components/MobileHeader";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import FAQ from "@/components/FAQ";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -35,7 +35,7 @@ const Index = () => {
           </div>
         </div>
         <Features />
-        <FAQ />
+        <Contact />
       </main>
       <Footer />
     </div>
