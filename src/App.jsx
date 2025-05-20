@@ -18,6 +18,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/wallet" element={<Wallet />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/terms" element={<Terms />} />
