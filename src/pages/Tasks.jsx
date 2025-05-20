@@ -3,11 +3,15 @@ import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import Advertisement from "@/components/Advertisement";
+import MobileHeader from "@/components/MobileHeader";
 
 const Tasks = () => {
   const { toast } = useToast();
   const [currentTaskId, setCurrentTaskId] = useState(null);
   const [completedTasks, setCompletedTasks] = useState([]);
+  const [showingAd, setShowingAd] = useState(false);
+  const [currentAdTask, setCurrentAdTask] = useState(null);
   
   // Mock data - would come from API in real app
   const availableTasks = [
@@ -65,8 +69,9 @@ const Tasks = () => {
     const task = availableTasks.find(t => t.id === taskId);
     
     if (task.type === "ad") {
-      // For ad tasks, we show a modal with the ad
-      showAdModal(task);
+      // For ad tasks, we show the ad component
+      setShowingAd(true);
+      setCurrentAdTask(task);
     } else {
       // For other tasks, simulate completion after delay
       setTimeout(() => {
@@ -75,17 +80,13 @@ const Tasks = () => {
     }
   };
   
-  const showAdModal = (task) => {
-    // In a real app, this would open a modal with an ad
-    toast({
-      title: "Advertisement",
-      description: "Watching advertisement... Please wait 30 seconds",
-    });
-    
-    // Simulate ad completion after 5 seconds (would be longer in real app)
-    setTimeout(() => {
-      completeTask(task.id);
-    }, 5000);
+  const handleAdCompletion = () => {
+    // Close the ad and complete the task
+    setShowingAd(false);
+    if (currentAdTask) {
+      completeTask(currentAdTask.id);
+      setCurrentAdTask(null);
+    }
   };
   
   const completeTask = (taskId) => {
@@ -105,10 +106,22 @@ const Tasks = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="container mx-auto py-8">
+    <div className="min-h-screen bg-gray-50">
+      <MobileHeader />
+      <div className="container mx-auto p-4 py-8">
         <h1 className="text-3xl font-bold mb-2">Available Tasks</h1>
         <p className="text-gray-600 mb-8">Complete these tasks to earn money</p>
+        
+        {showingAd && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <Advertisement 
+              onComplete={handleAdCompletion}
+              duration={10}
+              title={currentAdTask?.title || "Advertisement"}
+              description={currentAdTask?.description || "Watch this advertisement to earn rewards"}
+            />
+          </div>
+        )}
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {availableTasks.map(task => (
@@ -143,7 +156,7 @@ const Tasks = () => {
               <CardFooter>
                 <Button 
                   className="w-full"
-                  disabled={isTaskCompleted(task.id) || currentTaskId !== null}
+                  disabled={isTaskCompleted(task.id) || currentTaskId !== null || showingAd}
                   onClick={() => startTask(task.id)}
                 >
                   {currentTaskId === task.id ? "Working..." : 
