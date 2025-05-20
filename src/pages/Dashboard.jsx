@@ -3,6 +3,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import MobileHeader from "@/components/MobileHeader";
 
 const Dashboard = () => {
   // Mock data - would come from API in real app
@@ -14,20 +15,11 @@ const Dashboard = () => {
     { id: 2, name: "Watch Ad ABC", reward: 150, date: "2025-05-16" },
     { id: 3, name: "Feedback Form", reward: 300, date: "2025-05-14" },
   ];
-  
-  // Get bonus rate based on balance
-  const getBonusRate = (balance) => {
-    if (balance >= 50000) return "3%";
-    if (balance >= 10000) return "2%";
-    if (balance >= 5000) return "1.5%";
-    return "1%";
-  };
-  
-  const currentBonusRate = getBonusRate(walletBalance);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="container mx-auto py-8">
+    <div className="min-h-screen bg-gray-50">
+      <MobileHeader />
+      <div className="container mx-auto p-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -71,10 +63,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">₦{depositBonus.toLocaleString()}</div>
-              <p className="text-xs text-muted-foreground mt-1">Earning {currentBonusRate} daily on deposits</p>
-              <div className="bg-primary/10 rounded-md p-2 mt-2 text-xs">
-                Increase your balance to earn higher bonus rates!
-              </div>
+              <p className="text-xs text-muted-foreground mt-1">Earning 1% daily on deposits</p>
             </CardContent>
           </Card>
         </div>
@@ -118,7 +107,7 @@ const Dashboard = () => {
                     Deposit Funds
                   </Button>
                 </Link>
-                <Link to="/wallet?tab=withdraw">
+                <Link to="/withdraw">
                   <Button className="w-full" variant="outline">
                     Withdraw
                   </Button>
